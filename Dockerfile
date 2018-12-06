@@ -14,12 +14,15 @@ RUN apt-get update && \
     libasound2 \
     gnupg2
 
-# Install Node and Cypress
+# Install Node
 RUN curl -sLO https://deb.nodesource.com/setup_8.x && \
   bash ./setup_8.x && \
+  rm ./setup_8.x && \
   apt-get install -y nodejs
 
 # Install WP-CLI
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
   chmod +x wp-cli.phar && \
   mv wp-cli.phar /usr/local/bin/wp
+
+CMD ["node"]
